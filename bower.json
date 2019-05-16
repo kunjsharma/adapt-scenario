@@ -1,0 +1,22 @@
+{
+  "name": "adapt-scenario",
+  "version": "2.0.0",
+  "framework": ">=3.2",
+  "homepage": "https://github.com/kunjsharma/adapt-scenario",
+  "issues": "https://github.com/kunjsharma/adapt-scenario",
+  "repository": "git://github.com/kunjsharma/adapt-scenario.git",
+  "displayName" : "scenario",
+  "component" : "scenario",
+  "description": "scenario component",
+  "main": "/js/adapt-scenario.js",
+  "authors": [
+       "Kunj B Sharma <kunjsharma@hotmail.com>"
+  ],
+  "keywords": [
+    "adapt",
+    "adapt-plugin",
+    "adapt-component",
+    "adapt-scenario"
+  ],
+  "license": "GPLv3"
+}
