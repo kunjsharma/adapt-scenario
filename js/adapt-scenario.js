@@ -4,7 +4,7 @@ define([
     'core/js/models/componentModel'
 ], function(Adapt, ComponentView, ComponentModel) {
 
-    var BlankView = ComponentView.extend({
+    var ScenarioView = ComponentView.extend({
 
         preRender: function() {
             this.$el.addClass('no-state');
@@ -28,7 +28,7 @@ define([
 
     return Adapt.register('blank', {
         model: ComponentModel.extend({}),// create a new class in the inheritance chain so it can be extended per component type if necessary later
-        view: BlankView
+        view: ScenarioView
     });
 
 });
