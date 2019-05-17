@@ -1,0 +1,17 @@
+//component.json
+{
+    "_id": "c-05",
+    "_parentId": "b-05",
+    "_type": "component",
+    "_component": "scenario",
+    "_layout": "left",
+    "title": "Scenario",
+    "body": "",
+    "_items": [{
+        "_graphic": {
+            "_highlight": "",
+            "_src": "assets/co-05-01.png",
+            "alt": ""
+        }
+    }]
+}

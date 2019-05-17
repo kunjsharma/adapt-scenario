@@ -1,34 +1,156 @@
-define([
-    'core/js/adapt',
-    'core/js/views/componentView',
-    'core/js/models/componentModel'
-], function(Adapt, ComponentView, ComponentModel) {
-
-    var ScenarioView = ComponentView.extend({
-
-        preRender: function() {
-            this.$el.addClass('no-state');
-            this.checkIfResetOnRevisit();
+/*
+ * adapt-scenario
+ * License - GPLv3
+ * Maintainers - Kunj B Sharma <kunjsharma@hotmail.com>
+ */
+define(function (require) {
+    var ComponentView = require('coreViews/componentView');
+    var Adapt = require('coreJS/adapt');
+    var Scenario = ComponentView.extend({
+        ele: {
+            //Elements cache if required
         },
 
-        postRender: function() {
-            this.setReadyStatus();
-            this.setupInviewCompletion();
+        vars: {
+            m_nFadeInTime: 2000
+        },
+
+        events: {
+            'click .hotspot, touchend .hotspot':'onHotspotClick'
+        },
+
+        preRender: function() {
+            // Checks to see if the animation hotspot should be reset on revisit
+            this.checkIfResetOnRevisit();
         },
 
         checkIfResetOnRevisit: function() {
             var isResetOnRevisit = this.model.get('_isResetOnRevisit');
-
+			this.model.set('isAnimated', false);
+            // If reset is enabled set defaults
             if (isResetOnRevisit) {
                 this.model.reset(isResetOnRevisit);
+
+                _.each(this.model.get('_hotspots'), function(item) {
+                    item._isVisited = false;
+                });
+
+				this.$(".scenario-item img").css({
+                    "opacity": 0
+                });
             }
+        },
+
+        postRender: function () {
+            this.setReadyStatus();
+            this.animateItems();
+        },
+
+        animateItems: function() {
+            if (this.model.get('_animation') == false) {
+                this.$(".scenario-item img").css({
+                    "opacity": 1
+                });
+                this.initHotspots();
+                return;
+            }
+
+            var _oThisLevel0 = this,
+                _nDelay = Number(this.model.get('_delay')),
+                _nTimeOutId;
+            this.$(".scenario-widget").bind('inview', function (event, visible) {
+				if(_oThisLevel0.model.get('isAnimated') == false) {
+
+	                if (visible == true) {
+	                    var _oItem = $(this).find('.scenario-item img'), _nItems = _oItem.length;
+
+	                    _oItem.each(function (index) {
+	                        var _oThisLevel1 = this;
+
+	                        _nTimeOutId = setTimeout(function() {
+	                            $(_oThisLevel1).animate({
+	                                opacity: 1
+	                            }, {duration: _nDelay, queue: false, complete: function() {
+	                                if (index == (_nItems - 1)) {
+	                                    _oThisLevel0.initHotspots();
+	                                    clearTimeout(_nTimeOutId);
+										_oThisLevel0.model.set('isAnimated', true);
+	                                }
+	                            } });
+	                        }, _nDelay * (index/2));
+	                    });
+	                }
+				}
+            });
+        },
+
+        initHotspots: function() {
+            var _nHotspots = this.$('.scenario-hotspot .hotspot').length;
+
+            if(_nHotspots>0) {
+                if (this.model.get('_navigation') == 'linear') {
+                    this.$('.scenario-hotspot .hotspot').eq(0).show();
+                    this.$('.scenario-highlight img').eq(0).fadeIn(this.vars.m_nFadeInTime);
+                    //this.$('.scenario-highlight img').eq(0).show().pulse({opacity : 0}, { pulses : 3 });
+                } else {
+                    this.$('.scenario-hotspot .hotspot').show();
+                    this.$('.scenario-highlight img').fadeIn(this.vars.m_nFadeInTime);
+                    //this.$('.scenario-highlight img').show().pulse({opacity : 0}, { pulses : 3 });
+                }
+            }else {
+                this.setCompletionStatus();
+            }
+        },
+
+        onHotspotClick: function(event) {
+            var _oTarget = $(event.currentTarget),
+                _nIndex = _oTarget.index(),
+                _oPopup;
+
+            if(this.model.get('_navigation') == 'linear') {
+                if(!_oTarget.hasClass('visited')) {
+                    this.$('.scenario-highlight img').eq(_nIndex+1).fadeIn(this.vars.m_nFadeInTime);
+                    //this.$('.scenario-highlight img').eq(_nIndex+1).show().pulse({opacity : 0}, { pulses : 3 });
+                    this.$('.scenario-hotspot .hotspot').eq(_nIndex+1).show();
+                }
+            }
+            
+            _oTarget.addClass('visited');
+            this.$('.scenario-highlight img').eq(_nIndex).fadeOut(200);
+
+            _oPopup = {
+                title: "",
+                body: this.model.get('_feedback')[_nIndex]
+            };
+
+            Adapt.trigger('notify:popup', _oPopup);
+            this.setVisited(_nIndex);
+        },
+
+        setVisited: function (index) {
+            var item = this.model.get('_hotspots')[index];
+            item._isVisited = true;
+            this.checkCompletionStatus();
+        },
+
+        checkCompletionStatus: function () {
+            if (this.getVisitedItems().length == this.model.get('_hotspots').length) {
+                this.setCompletionStatus();
+                //Change instruction on interaction complete if required.
+                this.$('.hotspot-instruction').html(this.$('.hotspot-instruction').data('next-instruction'));
+                this.$('.scenario-inner').parent().parent().find('.hotspot-instruction').html(this.$('.scenario-inner').parent().parent().find('.hotspot-instruction').data('next-instruction'));
+            }
+        },
+
+        getVisitedItems: function () {
+            return _.filter(this.model.get('_hotspots'), function (item) {
+                return item._isVisited;
+            });
         }
-
     });
 
-    return Adapt.register('blank', {
-        model: ComponentModel.extend({}),// create a new class in the inheritance chain so it can be extended per component type if necessary later
-        view: ScenarioView
-    });
+    Adapt.register("scenario", Scenario);
+
+    return Scenario;
 
 });

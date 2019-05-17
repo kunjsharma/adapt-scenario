@@ -2,14 +2,120 @@
   "type":"object",
   "$schema": "http://json-schema.org/draft-04/schema",
   "id": "http://jsonschema.net",
-  "$ref": "http://localhost/plugins/content/component/model.schema",
+  "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": true,
+      "default": "This is a Animation Hotspot component having images and hotspots over that enables learner to click.",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    }
+  },
   "properties":{
     "_supportedLayout": {
       "type": "string",
-      "required": true,
       "enum": ["full-width", "half-width", "both"],
       "default": "both",
       "editorOnly": true
+    },
+    "instruction": {
+      "type": "string",
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the instruction text",
+      "translatable": true
+    },
+    "_bg": {
+      "type": "string",
+      "default": "",
+      "validators": [],
+      "help": "Background image requires to display component correctly in responsive.",
+      "translatable": false
+    },
+    "_animation": {
+      "type": "boolean",
+      "default": "",
+      "validators": [],
+      "help": "",
+      "translatable": false
+    },
+    "_delay": {
+      "type": "number",
+      "default": "",
+      "validators": [],
+      "help": "",
+      "translatable": false
+    },
+    "_navigation": {
+      "type": "string",
+      "default": "",
+      "validators": [],
+      "help": "linear/random",
+      "translatable": false
+    },
+    "_items": {
+      "type":"array",
+      "title": "Items",
+      "help": "Each item represents one choice for the animation frames and contains values for text and _graphic.",
+      "items": {
+        "type":"object",
+        "properties":{
+          "_graphic": {
+            "type":"object",
+            "title": "Graphic",
+            "properties":{
+              "alt": {
+                "type":"string",
+                "default": "",
+                "title": "Alternative Text",
+                "inputType": "Text",
+                "validators": [],
+                "help": "The alternative text for this image",
+                "translatable": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "_hotspots": {
+      "type":"array",
+      "title": "Hotspots",
+      "help": "Each item represents one choice for the animation frames and contains values for text and _graphic.",
+      "properties":{
+        "label": {
+          "type":"string",
+          "title": "Hotspot label",
+          "validators": [],
+          "help": "The alternative text for this image",
+          "translatable": true
+        },
+        "_top": {
+          "type":"string",
+          "translatable": false
+        },
+        "_left": {
+          "type":"string",
+          "translatable": false
+        },
+        "_width": {
+          "type":"string",
+          "translatable": false
+        },
+        "_height": {
+          "type":"string",
+          "translatable": false
+        },
+        "_borderRadius": {
+          "type":"string",
+          "translatable": false
+        }
+      }
+    },
+    "_feedback": {
+      "type":"object"
     }
   }
 }

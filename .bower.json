@@ -1,17 +1,13 @@
 {
   "name": "adapt-scenario",
-	"version": "0.0.1",
-  "framework": ">=3.2",
+  "version": "0.0.1",
+  "framework": "^3.2.1",
   "homepage": "https://github.com/kunjsharma/adapt-scenario",
-  "issues": "https://github.com/kunjsharma/adapt-scenario",
-  "repository": "git://github.com/kunjsharma/adapt-scenario.git",
-  "displayName": "scenario",
-  "component": "scenario",
-  "description": "scenario component",
-  "main": "/js/adapt-scenario.js",
   "authors": [
     "Kunj B Sharma <kunjsharma@hotmail.com>"
   ],
+  "description": "A component having hotspots over images that enables learner to click and display a detailed popup.",
+  "main": "/js/adapt-scenario.js",
   "keywords": [
     "adapt",
     "adapt-plugin",
@@ -23,10 +19,10 @@
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "dd2830cf3d90c8c3d94r5f1f5nana33c2b8cb97c"
+    "commit": "3c933a5f-3234-4c5c-af4e-72a864684567"
   },
   "_source": "git://github.com/kunjsharma/adapt-scenario.git",
-  "_target": "*",
+  "_target": ">=2.0.3",
   "_originalSource": "adapt-scenario",
   "_direct": true
 }
