@@ -1,13 +1,13 @@
-# adapt-animation-hotspot  
+# adapt-scenario  
 
-<img src="assets/animation-hotspot.gif" alt="animation-hotspot" align="right" height="400px">
+<img src="assets/scenario.gif" alt="scenario" align="right" height="400px">
 
-Component having hotspots over the images that enables learner display a detailed popup.
+A scenario component. In progress...
 
 ### Installation
 First, be sure to install the [Adapt Command Line Interface](https://github.com/cajones/adapt-cli), then from the command line run:-
 
-    adapt install animation-hotspot
+    adapt install scenario
 
 Or, download the ZIP and extract into the src > extensions directory and run an appropriate Grunt task.
 
@@ -19,7 +19,7 @@ https://kunjsharma.github.io/#/id/co-00
 
 [**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
-**_component** (string): This value must be: `animation-hotspot`.
+**_component** (string): This value must be: `scenario`.
 
 **_animation** (boolean): Animation required or not.
 
@@ -44,7 +44,6 @@ Compatiblity issue with authoring tool, ok with framework.
 Intended to develop standard Adapt browser/devices specifications.
 
 ----------------------------
-**Version number:**  2.0.2  
+**Version number:**  0.0.1  
 **Framework versions:** ^2.0.3  
-**Accessibility support:** WAI AA  
 **Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  
