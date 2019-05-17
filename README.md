@@ -1,7 +1,9 @@
 # adapt-scenario  
 
 
-**SimpleTable** is an *interaction component* with capability to display text. IN progress...
+**Scenario** is an *interaction component* with capability to display text.
+
+In progress, please wait for use it...
 <img src="sample/scenario.png" alt="sample table component" align="right" width="50%">
 
 ### Installation
@@ -22,7 +24,7 @@ https://kunjsharma.github.io/#/id/co-00
 
 ## Limitations
 
-Supports equal columns in each row. 
+ 
 
 ----------------------------
 **Version number:**  2.0.0  
