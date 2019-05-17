@@ -13,31 +13,15 @@ Or, download the ZIP and extract into the src > extensions directory and run an 
 
 ### Demo
 
-https://kunjsharma.github.io/#/id/co-00
-
 ### Attributes
 
 [**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
 **_component** (string): This value must be: `scenario`.
 
-**_animation** (boolean): Animation required or not.
-
-**_delay** (string): Time interval between frames (ms).
-
-**_navigation** (string): linear or random.
-
-**_bg** (string): Background image. Required to display component correctly in responsive.
-
-**_items** (array): Contains values for **_graphic** and **_highlight** for each animation frame.
-
-**_hotspots** (array): Sets dimension, position, border radius and label.
-
-**_feedback** (array): Notify popup text (opens when click on hotspot).
-
 ### Limitations
 
-Compatiblity issue with authoring tool, ok with framework.
+
 
 ### Browser/platform specification
 
