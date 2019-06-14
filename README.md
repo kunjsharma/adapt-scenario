@@ -1,19 +1,33 @@
-adapt-contrib-narrative
-===================
+# adapt-scenario  
 
-An Adapt core contributed narrative component that displays images with corresponding text and left and right navigation controls to progress through the narrative.
+<img src="assets/scenario.gif" alt="scenario" align="right" height="400px">
 
-The narrative control renders differently when Adapt.device.screenSize is 'small'.  In this case, the corresponding text is only available by clicking the '+' icon.
+A scenario component. In progress... please do not use it until first release publishes.
 
-Installation
-------------
-
+### Installation
 First, be sure to install the [Adapt Command Line Interface](https://github.com/cajones/adapt-cli), then from the command line run:-
 
-		adapt install adapt-contrib-narrative
+    adapt install scenario
 
-Usage
------
-Once installed, the component can be used to create a narrative control comprised of one or more graphic components and associated text and a means of navigating between them.
+Or, download the ZIP and extract into the src > extensions directory and run an appropriate Grunt task.
 
-For example JSON format, see [example.json](https://github.com/adaptlearning/adapt-contrib-narrative/blob/master/example.json)
+### Demo
+
+### Attributes
+
+[**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
+
+**_component** (string): This value must be: `scenario`.
+
+### Limitations
+
+
+
+### Browser/platform specification
+
+Intended to develop standard Adapt browser/devices specifications.
+
+----------------------------
+**Version number:**  0.0.1  
+**Framework versions:** ^2.0.3  
+**Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  
