@@ -1,17 +1,87 @@
-//component.json
 {
     "_id": "c-05",
     "_parentId": "b-05",
     "_type": "component",
+    "_layout": "full",
     "_component": "scenario",
-    "_layout": "left",
-    "title": "Scenario",
-    "body": "",
-    "_items": [{
-        "_graphic": {
-            "_highlight": "",
-            "_src": "assets/co-05-01.png",
-            "alt": ""
-        }
-    }]
+    "title": "The Scenario Conversation",
+    "displayTitle": "The Scenario Conversation",
+    "body": "Select the Forward button on the slider to view the conversation.",
+    "speakerName": 2,
+    "itemsOnStage": 2,
+    "_minWidth": 195,
+    "_marginLarge": "100px",
+    "_marginSmall": "14px",
+    "_minHeightSmall": "12px",
+    "items": [
+    {
+        "speaker": "Sam",
+        "body": "Hi Martin",
+        "graphic": {
+            "src": "course/en/images/misc/sam.png"
+        },
+        "position": {
+            "right": false
+        },
+        "color": false
+    },
+    {
+        "speaker": "Martin",
+        "body": "Hi Sam",
+        "graphic": {
+        "src": "course/en/images/misc/martin.png"
+        },
+        "position": {
+            "right": true
+        },
+        "color": false
+    },
+    {
+        "speaker": "Sam",
+        "body": "Responsive e-learning design takes its inspiration from responsive web design; an approach that ensures a single version of a website or an e-learning course can provide a viewing experience optimised for different devices, from desktop to tablet to smartphone.",
+        "graphic": {
+        "src": "course/en/images/misc/sam.png"
+        },
+        "position": {
+            "right": false
+        },
+        "color": true
+    },
+    {
+        "speaker": "Martin",
+        "body": "Yes, the Adapt Framework creates HTML5 e-learning courses. They may be delivered with a web server or a with SCORM compliant learning management system. The Adapt framework powers the Adapt authoring tool, an easy to use design tool for creating Adapt courses.",
+        "graphic": {
+        "src": "course/en/images/misc/martin.png"
+        },
+        "position": {
+            "right": true
+        },
+        "color": false
+    },
+    {
+        "speaker": "Sam",
+        "body": "Right",
+        "graphic": {
+        "src": "course/en/images/misc/sam.png"
+        },
+        "position": {
+            "right": false
+        },
+        "color": true
+    },
+    {
+        "speaker": "Martin",
+        "body": "We’re inspired by being completely open and everything is discussed in the open from the start. This is where these discussions take place. Everyone is welcome and free to ask anything related to the Adapt project or responsive e-learning design, suggest developments and share experiences.",
+        "graphic": {
+        "src": "course/en/images/misc/martin.png"
+        },
+        "position": {
+            "right": true
+        },
+        "color": true
+    }
+    ],
+    "_pageLevelProgress": {
+        "_isEnabled": false
+    }
 }

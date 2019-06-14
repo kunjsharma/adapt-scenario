@@ -1,63 +1,237 @@
 .scenario-component {
-    .scenario-title {
-        margin: 0px;
+    .hidden {
+        display: none;
     }
-    .scenario-widget {
-        margin-left: 0px;
-        .scenario-widget-container {
-            position: relative;
+    .scenario-outer-widget {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 40px;
+        padding-top: 55px; //40 + 15
+
+        .scenario-widget {
+            background-repeat: no-repeat;
+            min-height: 290px;
             width: 100%;
-            height: 100%;
-            img {
-                width: 100%;
-            }
-            .scenario-item-holder {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                img {
-                    vertical-align: top;
-                }
-                .scenario-item {
-                    position: absolute;
-                    height: 100%;
+            overflow: visible;
+            background-size: 100% 100%;
+            .scenario-contanier {
+                //Scenario callout
+                .scenario-callout-contanier {
                     width: 100%;
+                    float: left;
+                    clear: both;
+                    min-height: 50px;
+    
+                    .scenario-callout-image {
+                        margin-top: -15px;
+                        margin-bottom: -15px;
+                        &.right {
+                            float: left;
+                        }
+                        &.left {
+                            float: right;
+                        }
+                        .speaker-container {
+                            background-color: @background-color;
+                            margin-top: -12px;
+                            font-size: 14px;
+                            width: 100%;
+                            b {
+                                padding-left: 6px;
+                            }
+                        }
+                        @media screen and (max-width: @device-width-small) {
+                            display: none;
+                        }
+                    }
+                   
+                    .scenario-callout-text {
+                        position: relative;
+                        min-height: 50px;
+                        padding: @item-padding;
+                        max-width: 40%;
+                
+                        transform: translate(0, 40%);
+                
+                        &.color1 {
+                            background: @white;
+                            color: @black;
+                            &.right {
+                                &:after {
+                                    border-right-color: @white;
+                                }
+                            }
+                            &.left {
+                                &:after {
+                                    border-left-color: @white;
+                                }
+                            }
+                        }
+                        &.color2 {
+                            background: @white;
+                            color: @black;
+                            &.right {
+                                &:after {
+                                    border-right-color: @white;
+                                }
+                            }
+                            &.left {
+                                &:after {
+                                    border-left-color: @white;
+                                }
+                            }
+                        }
+                        &.right {
+                            float: left;
+                            margin-left: 5%;
+                            &:after {
+                                right: 100%;
+                                top: 50%;
+                                border: solid transparent;
+                                content: " ";
+                                height: 0;
+                                width: 0;
+                                position: absolute;
+                                pointer-events: none;
+                
+                                border-width: 27px 27px 0px 27px;
+                                margin-top: -20px;
+                            }
+                           
+                        }
+                        &.left {
+                            float: right;
+                            margin-right: 5%;
+                            &:after {
+                                left: 100%;
+                                top: 50%;
+                                border: solid transparent;
+                                content: " ";
+                                height: 0;
+                                width: 0;
+                                position: absolute;
+                                pointer-events: none;
+                
+                                border-width: 27px 27px 0px 27px;
+                                margin-top: -20px;
+                            }
+                        }
+    
+                        .calloutTitle {
+                            font-size: 14px;
+                        }
+                        
+                        @media screen and (max-width: @device-width-medium) {
+                            max-width: 48%;
+                        }
+                        @media screen and (max-width: @device-width-small) {
+                            min-height: 0x;
+                            padding: @item-padding;
+                            max-width: 70%;
+                            margin-bottom: @item-padding;
+                            transform: translate(0, 0);
+                        }
+                    }
+                }
+                @media screen and (max-width: @device-width-small) {
+                    &:last-child {
+                        .scenario-callout-text {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        //Scenario navigator
+        .scenario-navigator-container {
+            max-width: 326px;
+            margin: 0 auto;
+
+            .scenario-navigator-progressbar-container {
+                position: relative;
+                width: 226px;
+                height: 50px;
+                float: left;
+
+                .scenario-navigator-progressbar {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    color: @inverted-foreground-color;
+                    background-color: @inverted-foreground-color;
+                    border-left: 0;
+                    border-right: 0;
                     top: 0;
+                    bottom: 0;
                     left: 0;
-                    z-index: 0;
-                    img {
-                        background: none;
-                        opacity: 0;
-                        display: block;
-                        clear: both;
-                        width: 100%;
-                        top: 0;
+                    right: 0;
+                    margin: auto;
+                }
+                .scenario-navigator-progressbar-fill {
+                    width: 100%;
+                    height: 100%;
+                    background-color: lighten(@blue, 20%);
+                }
+            }
+
+            .scenario-navigator-button {
+                width: 50px;
+                height: 50px;
+                display: inline-block;
+                //background-color: @green;
+                margin: 0px;
+                padding: 0px;
+                text-align: center;
+                text-decoration: none;
+                color: @button-text-hover-color;
+                &.left {
+                    left: 0;
+                    float: left;
+                    .dir-rtl & {
+                        float: right;
+                        left: inherit;
+                        right: 0;
+                    }
+                }
+                &.right {
+                    right: 0;
+                    float: right;
+                    .dir-rtl & {
+                        float: left;
+                        right: inherit;
                         left: 0;
-                        position: absolute;
                     }
                 }
-                .scenario-highlight {
-                    z-index: 1;
-                    img {
-                        display: none;
-                        position: absolute;
+                &.disabled {
+                    cursor: default;
+                    color: @button-text-disabled-color;
+                    background-color: @item-disabled-color;
+                    &:hover {
+                        background-color: @item-disabled-color;
+                        color: @button-text-disabled-color;
                     }
                 }
-                .scenario-hotspot {
-                    z-index: 2;
-                    .hotspot {
-                        position: absolute;
-                        border-radius: 0px;
-                        width: 20%;
-                        background: rgba(255,0,0,0.0);
-                        z-index: 1;
-                        cursor: pointer;
-                        text-align: center;
-                        display: none;
-                    }
+                &.selected {
+                    background-color: @secondary-color;
+                    color: @button-text-hover-color;
                 }
+                &:hover {
+                    color: @button-text-hover-color;
+                }
+                &.visited {
+                    color: @item-text-visited-color;
+                    background-color: @item-visited-color;
+                    border-color: @item-visited-color;
+                }
+                .icon {
+                    color: @inverted-foreground-color;
+                    margin: 12px;
+                }
+            }
+
+            @media screen and (max-width: @device-width-small) {
+                display: none;
             }
         }
     }

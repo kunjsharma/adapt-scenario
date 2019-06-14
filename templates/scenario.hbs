@@ -1,29 +1,41 @@
 {{! Maintainers - Kunj B Sharma}}
-<div class="scenario-inner component-inner">
-    {{> component this}}
-    <div class="scenario-widget component-widget">
-        <div class="scenario-widget-container">
-            <img class="scenario-widget-bg" src="{{_bg}}"/>
-            <div class="scenario-item-holder">
-                {{! Images }}
-                <div class="scenario-item">
-                    {{#each _items}}
-                        <img src="{{_graphic._src}}" alt="{{_graphic.alt}}" title="{{{_graphic.alt}}}" tabindex="-1" aria-hidden="true"/>
-                    {{/each}}
-                </div>
-                {{! Hotspot highlight images (optional) }}
-                <div class="scenario-highlight">
-                    {{#each _items}}
-                        {{#if _graphic._highlight}}<img src="{{_graphic._highlight}}" alt="" title="" tabindex="-1" aria-hidden="true"/>{{/if}}
-                    {{/each}}
-                </div>
-                {{! Hotspots }}
-                <div class="scenario-hotspot">
-                    {{#each _hotspots}}
-                        <div class="hotspot" style="top:{{_top}};left:{{_left}};width:{{_width}};height:{{_height}}; {{#if _borderRadius}} border-radius: {{_borderRadius}};{{/if}} " tabindex="0" aria-label="{{label}}" role="button"></div>
-                    {{/each}}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="scenario-inner component-inner" role="region" aria-label="{{_globals._components._scenarioImages.ariaRegion}}">
+	{{> component this}}
+	{{! Scenario Outer Widget }}
+	<div class="scenario-outer-widget">
+		{{! Scenario Widget }}
+		<div class="scenario-widget component-widget" style="background-image:url({{src}});">
+			 {{#each items}}
+				<div class="scenario-contanier">
+					{{! Callout }}
+					<div class="scenario-callout-contanier">
+						{{#if graphic}}
+						<div class="scenario-callout-image {{#if position.right}} right {{else}} left {{/if}}">
+							<img src="{{graphic.src}}" alt="{{graphic.alt}}" title="{{{graphic.alt}}}"/>
+							{{!-- <div class="speaker-container"><b  aria-label="{{speaker}} {{../../_globals._accessibility._ariaLabels.says}}" tabindex="0" role="region">{{{speaker}}}</b></div> --}}
+						</div>
+						{{/if}}
+						<div class="scenario-callout-text {{#if color}} color1 {{else}} color2 {{/if}} {{#if position.right}} right {{else}} left {{/if}}">
+							{{!-- <div class="calloutTitle"><b  aria-label="{{speaker}} {{../../_globals._accessibility._ariaLabels.says}}" tabindex="0" role="region">{{{speaker}}}</b></div> --}}
+							<div class="calloutBody">{{{a11y_text body}}}</div>
+						</div>
+					</div>
+				</div>
+			 {{/each}}
+		</div>
+		{{! Scenario navigator }}
+		<div class="scenario-navigator-container">
+			<button class="scenario-navigator-button left" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioBackward.ariaLabel}}">
+				<div class="icon icon-controls-left"></div>
+			</button>
+			<div class="scenario-navigator-progressbar-container">
+				<div class="scenario-navigator-progressbar">
+					<div class="scenario-navigator-progressbar-fill"></div>
+				</div>
+			</div>
+			<button class="scenario-navigator-button right" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioForward.ariaLabel}}">
+				<div class="icon icon-controls-right"></div>
+			</button>
+		</div>
+	</div>
 </div>

@@ -1,156 +1,157 @@
-/*
- * adapt-scenario
- * License - GPLv3
- * Maintainers - Kunj B Sharma <kunjsharma@hotmail.com>
- */
-define(function (require) {
+define(function(require) {
+
     var ComponentView = require('coreViews/componentView');
     var Adapt = require('coreJS/adapt');
+    var Handlebars = require('handlebars');
     var Scenario = ComponentView.extend({
-        ele: {
-            //Elements cache if required
-        },
-
-        vars: {
-            m_nFadeInTime: 2000
-        },
-
         events: {
-            'click .hotspot, touchend .hotspot':'onHotspotClick'
+            'click .scenario-navigator-button': 'navigateClick'
         },
-
         preRender: function() {
-            // Checks to see if the animation hotspot should be reset on revisit
-            this.checkIfResetOnRevisit();
-        },
-
-        checkIfResetOnRevisit: function() {
-            var isResetOnRevisit = this.model.get('_isResetOnRevisit');
-			this.model.set('isAnimated', false);
-            // If reset is enabled set defaults
-            if (isResetOnRevisit) {
-                this.model.reset(isResetOnRevisit);
-
-                _.each(this.model.get('_hotspots'), function(item) {
-                    item._isVisited = false;
-                });
-
-				this.$(".scenario-item img").css({
-                    "opacity": 0
+            //OUR HBS template requires this helper
+            if (Handlebars.helpers && !('ifvalue' in Handlebars.helpers)) {
+                Handlebars.registerHelper('ifvalue', function (conditional, options) {
+                    if (options.hash.value === conditional) {
+                        return options.fn(this)
+                    } else {
+                        return options.inverse(this);
+                    }
                 });
             }
-        },
+            this.model.set('_currentScenario', 0);
+            this.model.set('_itemsOnStage', 0);
 
-        postRender: function () {
+            this.listenTo(Adapt, 'device:resize', this.setDeviceSize, this);
+            this.listenTo(Adapt, 'device:changed', this.setDeviceSize, this);
+            
+          
+        },
+        setDeviceSize: function() {
+            if (Adapt.device.screenSize !== 'small') {
+                //if (!this.model.get('_isDesktop')) this.resetScenario();
+                this.showScenarioItems();
+                this.model.set('_isDesktop', true);
+                this.$el.removeClass('desktop mobile').addClass('desktop');
+            } else {
+                if (this.model.get('_isDesktop')) this.resetScenario();
+                this.model.set('_isDesktop', false);
+                this.$el.removeClass('desktop mobile').addClass('mobile');
+            }
+        },
+        postRender: function() {
+            this.setupScenario();
+            this.showScenarioItems();
             this.setReadyStatus();
-            this.animateItems();
+            this.model.set('_itemsOnStage', this.model.get('itemsOnStage'));
         },
-
-        animateItems: function() {
-            if (this.model.get('_animation') == false) {
-                this.$(".scenario-item img").css({
-                    "opacity": 1
-                });
-                this.initHotspots();
-                return;
-            }
-
-            var _oThisLevel0 = this,
-                _nDelay = Number(this.model.get('_delay')),
-                _nTimeOutId;
-            this.$(".scenario-widget").bind('inview', function (event, visible) {
-				if(_oThisLevel0.model.get('isAnimated') == false) {
-
-	                if (visible == true) {
-	                    var _oItem = $(this).find('.scenario-item img'), _nItems = _oItem.length;
-
-	                    _oItem.each(function (index) {
-	                        var _oThisLevel1 = this;
-
-	                        _nTimeOutId = setTimeout(function() {
-	                            $(_oThisLevel1).animate({
-	                                opacity: 1
-	                            }, {duration: _nDelay, queue: false, complete: function() {
-	                                if (index == (_nItems - 1)) {
-	                                    _oThisLevel0.initHotspots();
-	                                    clearTimeout(_nTimeOutId);
-										_oThisLevel0.model.set('isAnimated', true);
-	                                }
-	                            } });
-	                        }, _nDelay * (index/2));
-	                    });
-	                }
-				}
-            });
+        setupScenario: function() {
+            this.setDeviceSize();
+            var slideCount = this.model.get('items').length;
+            this.model.set('_itemCount', slideCount);
+            this.model.set('_active', true);
+            this.updateScenarioProgressBar();
         },
-
-        initHotspots: function() {
-            var _nHotspots = this.$('.scenario-hotspot .hotspot').length;
-
-            if(_nHotspots>0) {
-                if (this.model.get('_navigation') == 'linear') {
-                    this.$('.scenario-hotspot .hotspot').eq(0).show();
-                    this.$('.scenario-highlight img').eq(0).fadeIn(this.vars.m_nFadeInTime);
-                    //this.$('.scenario-highlight img').eq(0).show().pulse({opacity : 0}, { pulses : 3 });
+        navigateClick: function(event) {
+            event.preventDefault();
+            if (!this.model.get('_active')) return;
+            var $target = this.$(event.currentTarget);
+            if ($target.hasClass('left')) {
+                if (this.model.get('_currentScenario') > 0) {
+                    this.model.set('_currentScenario', this.model.get('_currentScenario') - 1);
+                } else return;
+            } else if ($target.hasClass('right') || $target.hasClass('down')) {
+                if (this.model.get('_currentScenario') >= (this.model.get('_itemCount'))) {
+                    return;
                 } else {
-                    this.$('.scenario-hotspot .hotspot').show();
-                    this.$('.scenario-highlight img').fadeIn(this.vars.m_nFadeInTime);
-                    //this.$('.scenario-highlight img').show().pulse({opacity : 0}, { pulses : 3 });
+                    this.model.set('_currentScenario', this.model.get('_currentScenario') + 1);
                 }
-            }else {
-                this.setCompletionStatus();
+            }
+            this.showScenarioItems();
+            this.setDeviceSize();
+            this.updateScenarioProgressBar();
+            this.evaluateCompletion();
+            
+            console.log("this.model.get('_currentScenario')", this.model.get('_currentScenario'));
+        },
+        showScenarioItems: function() {
+            if (Adapt.device.screenSize !== 'small') {
+                var currentScenarioNo = this.model.get('_currentScenario') - 1,
+                $container = this.$('.scenario-contanier');
+                if (this.model.get('_currentScenario') == 0) {
+                    $container.addClass("hidden");
+                } else {
+                    var itemCount = (currentScenarioNo) % (this.model.get('_itemsOnStage'));
+                    var startIndex = 0;
+                    var endIndex = 0;
+                    $container.addClass("hidden");
+                    if (itemCount == 0) $container.eq(currentScenarioNo).removeClass('hidden');
+                    else {
+                        startIndex = Math.floor((currentScenarioNo) / (this.model.get('_itemsOnStage'))) * (this.model.get('_itemsOnStage'));
+                        endIndex = currentScenarioNo;
+                        for (var i = startIndex; i <= endIndex; i++) {
+                            $container.eq(i).removeClass('hidden');
+                        }
+                    }
+                }
+            
+                $($container).eq(currentScenarioNo).a11y_focus();
+            } else {
+                this.$('.scenario-contanier').removeClass('hidden');
             }
         },
-
-        onHotspotClick: function(event) {
-            var _oTarget = $(event.currentTarget),
-                _nIndex = _oTarget.index(),
-                _oPopup;
-
-            if(this.model.get('_navigation') == 'linear') {
-                if(!_oTarget.hasClass('visited')) {
-                    this.$('.scenario-highlight img').eq(_nIndex+1).fadeIn(this.vars.m_nFadeInTime);
-                    //this.$('.scenario-highlight img').eq(_nIndex+1).show().pulse({opacity : 0}, { pulses : 3 });
-                    this.$('.scenario-hotspot .hotspot').eq(_nIndex+1).show();
-                }
+        updateScenarioProgressBar: function() {
+             var index = this.model.get('_currentScenario'),
+                total = this.model.get('_itemCount'),
+                _nWidth = (index / total) * 100;
+            //this.$('.scenario-navigator-progressbar-fill').width(_nWidth + '%');
+            this.$('.scenario-navigator-progressbar-fill').animate({
+                width: (_nWidth + '%')
+            });
+            this.$('.scenario-navigator-button').removeClass('disabled').attr('aria-hidden', false).prop('disabled', false);;
+            if(index == 0) {
+                this.$('.scenario-navigator-button.left').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);
+            } else if(index == total) {
+                this.$('.scenario-navigator-button.right').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);;
             }
             
-            _oTarget.addClass('visited');
-            this.$('.scenario-highlight img').eq(_nIndex).fadeOut(200);
+            var _progressFill = "";
+            /* var _blockWidth = (100 / index) + "%";
+            for (var i = 0; i < index; i++) {
+                _progressFill = _progressFill + "<div class='scenario-navigator-progressbar-block-button' style='width:" + _blockWidth + "' href='javascript:void();'><div class='scenario-navigator-progressbar-block-line'></div></div>";
 
-            _oPopup = {
-                title: "",
-                body: this.model.get('_feedback')[_nIndex]
-            };
-
-            Adapt.trigger('notify:popup', _oPopup);
-            this.setVisited(_nIndex);
-        },
-
-        setVisited: function (index) {
-            var item = this.model.get('_hotspots')[index];
-            item._isVisited = true;
-            this.checkCompletionStatus();
-        },
-
-        checkCompletionStatus: function () {
-            if (this.getVisitedItems().length == this.model.get('_hotspots').length) {
+            } */
+            this.$('.scenario-navigator-progressbar-fill').html(_progressFill);
+            if (index == total) {
+                /* this.$('.scenario-navigator-progressbar-block-button')
+                    .eq((total - 1))
+                    .html(""); */
+            }
+            //Set completed
+            if (index == total) {
                 this.setCompletionStatus();
-                //Change instruction on interaction complete if required.
-                this.$('.hotspot-instruction').html(this.$('.hotspot-instruction').data('next-instruction'));
-                this.$('.scenario-inner').parent().parent().find('.hotspot-instruction').html(this.$('.scenario-inner').parent().parent().find('.hotspot-instruction').data('next-instruction'));
+            }
+        },
+        resetScenario: function() {
+            if (Adapt.device.screenSize !== 'small') {
+                this.model.set('_currentScenario', 0);
+                this.$('.scenario-contanier').addClass("hidden");
+                this.updateScenarioProgressBar();
+            } else {
+                this.$('.scenario-contanier').removeClass("hidden");
             }
         },
 
-        getVisitedItems: function () {
-            return _.filter(this.model.get('_hotspots'), function (item) {
-                return item._isVisited;
+        getVisitedItems: function() {
+            return _.filter(this.model.get('items'), function (item) {
+                return item.visited;
             });
+        },
+        evaluateCompletion: function() {
+            if (this.getVisitedItems().length == this.model.get('items').length) {
+                this.setCompletionStatus();
+            }
         }
     });
-
     Adapt.register("scenario", Scenario);
-
     return Scenario;
-
 });
