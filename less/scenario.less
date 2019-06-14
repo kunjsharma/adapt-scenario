@@ -6,12 +6,11 @@
         float: left;
         width: 100%;
         box-sizing: border-box;
-        padding: 40px;
-        padding-top: 55px; //40 + 15
+        padding: @item-padding;
 
         .scenario-widget {
             background-repeat: no-repeat;
-            min-height: 290px;
+            min-height: 300px;
             width: 100%;
             overflow: visible;
             background-size: 100% 100%;
@@ -21,11 +20,7 @@
                     width: 100%;
                     float: left;
                     clear: both;
-                    min-height: 50px;
-    
                     .scenario-callout-image {
-                        margin-top: -15px;
-                        margin-bottom: -15px;
                         &.right {
                             float: left;
                         }
@@ -34,12 +29,7 @@
                         }
                         .speaker-container {
                             background-color: @background-color;
-                            margin-top: -12px;
-                            font-size: 14px;
                             width: 100%;
-                            b {
-                                padding-left: 6px;
-                            }
                         }
                         @media screen and (max-width: @device-width-small) {
                             display: none;
@@ -127,7 +117,6 @@
                             padding: @item-padding;
                             max-width: 70%;
                             margin-bottom: @item-padding;
-                            transform: translate(0, 0);
                         }
                     }
                 }
