@@ -84,7 +84,7 @@ define(function(require) {
                     var startIndex = 0;
                     var endIndex = 0;
                     $container.addClass("hidden");
-                    if (itemCount == 0) $container.eq(currentScenarioNo).removeClass('hidden');
+                    if (itemCount == 0) $container.eq(currentScenarioNo).removeClass('hidden').css({'opacity': 0}).animate({opacity: 1});
                     else {
                         startIndex = Math.floor((currentScenarioNo) / (this.model.get('_itemsOnStage'))) * (this.model.get('_itemsOnStage'));
                         endIndex = currentScenarioNo;
@@ -97,6 +97,7 @@ define(function(require) {
                 $($container).eq(currentScenarioNo).a11y_focus();
             } else {
                 this.$('.scenario-contanier').removeClass('hidden');
+                this.setCompletionStatus();
             }
         },
         updateScenarioProgressBar: function() {
@@ -106,7 +107,7 @@ define(function(require) {
             //this.$('.scenario-navigator-progressbar-fill').width(_nWidth + '%');
             this.$('.scenario-navigator-progressbar-fill').animate({
                 width: (_nWidth + '%')
-            });
+            }, 100);
             this.$('.scenario-navigator-button').removeClass('disabled').attr('aria-hidden', false).prop('disabled', false);;
             if(index == 0) {
                 this.$('.scenario-navigator-button.left').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);

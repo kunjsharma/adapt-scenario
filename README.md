@@ -28,6 +28,6 @@ Or, download the ZIP and extract into the src > extensions directory and run an 
 Intended to develop standard Adapt browser/devices specifications.
 
 ----------------------------
-**Version number:**  0.0.1  
+**Version number:**  0.0.2  
 **Framework versions:** ^2.0.3  
 **Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  
