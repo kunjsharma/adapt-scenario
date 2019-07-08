@@ -1,6 +1,6 @@
 # adapt-scenario  
 
-<img src="assets/adapt-scenario.png" alt="scenario" align="right" height="400px">
+<img src="assets/adapt-scenario.png" alt="scenario" align="right" width="400px">
 
 A scenario component.
 
