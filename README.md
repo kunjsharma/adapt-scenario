@@ -23,7 +23,7 @@ https://kunjsharma.github.io
 
 ### Limitations
 
-To be confirmed.
+Developed to work with framework, properties.schema requires to edit compatiblity with authoring tool. Contributors are welcome.
 
 
 ### Browser/platform specification
