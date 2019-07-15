@@ -9,7 +9,7 @@ First, be sure to install the [Adapt Command Line Interface](https://github.com/
 
     adapt install scenario
 
-Or, download the ZIP and extract into the src > extensions directory and run an appropriate Grunt task.
+Or, download the ZIP and extract into the src > components directory and run an appropriate Grunt task.
 
 ### Demo
 
