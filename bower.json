@@ -1,7 +1,10 @@
 {
     "name": "adapt-scenario",
-    "repository": "git://github.com/kunjsharma/adapt-scenario.git",
-    "framework": "^3.2.1",
+	"repository": {
+        "type": "git",
+        "url": "git://github.com/kunjsharma/adapt-scenario.git"
+    },
+    "framework": "^4.0.0",
     "version": "0.0.2",
     "homepage": "https://github.com/kunjsharma/adapt-scenario",
     "authors": [
