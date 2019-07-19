@@ -25,6 +25,9 @@ https://kunjsharma.github.io
 
 Developed to work with framework, properties.schema requires to edit compatiblity with authoring tool. Contributors are welcome.
 
+### Development stage
+
+Alpha
 
 ### Browser/platform specification
 
