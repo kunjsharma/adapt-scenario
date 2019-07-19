@@ -2,7 +2,7 @@
 
 <img src="assets/adapt-scenario.png" alt="scenario" align="right" width="400px">
 
-A scenario component.
+A scenario component. Development in progress...
 
 ### Installation
 First, be sure to install the [Adapt Command Line Interface](https://github.com/cajones/adapt-cli), then from the command line run:-
@@ -24,10 +24,6 @@ https://kunjsharma.github.io
 ### Limitations
 
 Developed to work with framework, properties.schema requires to edit compatiblity with authoring tool. Contributors are welcome.
-
-### Development stage
-
-Alpha
 
 ### Browser/platform specification
 
