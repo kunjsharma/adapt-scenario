@@ -2,7 +2,9 @@
 
 <img src="assets/adapt-scenario.png" alt="scenario" align="right" width="400px">
 
-A scenario component. Development in progress...
+A scenario component.
+
+Development in progress, however can be used with minor layout changes.
 
 ### Installation
 First, be sure to install the [Adapt Command Line Interface](https://github.com/cajones/adapt-cli), then from the command line run:-
