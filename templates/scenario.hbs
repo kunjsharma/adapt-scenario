@@ -1,9 +1,8 @@
-{{! Maintainers - Kunj B Sharma}}
+{{! Maintainer - Kunj kunjsharma@hotmail.com}}
 <div class="scenario-inner component-inner" role="region" aria-label="{{_globals._components._scenarioImages.ariaRegion}}">
 	{{> component this}}
-	{{! Scenario Outer Widget }}
 	<div class="scenario-outer-widget">
-		{{! Scenario Widget }}
+		{{! Widget }}
 		<div class="scenario-widget component-widget" style="background-image:url({{src}});">
 			 {{#each items}}
 				<div class="scenario-contanier">
@@ -12,18 +11,16 @@
 						{{#if graphic}}
 						<div class="scenario-callout-image {{#if position.right}} right {{else}} left {{/if}}">
 							<img src="{{graphic.src}}" alt="{{graphic.alt}}" title="{{{graphic.alt}}}"/>
-							{{!-- <div class="speaker-container"><b  aria-label="{{speaker}} {{../../_globals._accessibility._ariaLabels.says}}" tabindex="0" role="region">{{{speaker}}}</b></div> --}}
 						</div>
 						{{/if}}
 						<div class="scenario-callout-text {{#if color}} color1 {{else}} color2 {{/if}} {{#if position.right}} right {{else}} left {{/if}}">
-							{{!-- <div class="calloutTitle"><b  aria-label="{{speaker}} {{../../_globals._accessibility._ariaLabels.says}}" tabindex="0" role="region">{{{speaker}}}</b></div> --}}
-							<div class="calloutBody">{{{a11y_text body}}}</div>
+							<div>{{{a11y_text body}}}</div>
 						</div>
 					</div>
 				</div>
 			 {{/each}}
 		</div>
-		{{! Scenario navigator }}
+		{{! Navigator }}
 		<div class="scenario-navigator-container">
 			<button class="scenario-navigator-button left" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioBackward.ariaLabel}}">
 				<div class="icon icon-controls-left"></div>
