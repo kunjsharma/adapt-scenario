@@ -1,12 +1,12 @@
 {
   "name": "adapt-scenario",
-  "version": "0.0.2",
+  "version": "1.0.1",
   "framework": "^4.0.0",
   "homepage": "https://github.com/kunjsharma/adapt-scenario",
   "authors": [
     "Kunj B Sharma <kunjsharma@hotmail.com>"
   ],
-  "description": "A scenario component.",
+  "description": "A scenario component. Can be used in presenting the probable effects of one or more variables/characters in situation analysis.",
   "main": "/js/adapt-scenario.js",
   "keywords": [
     "adapt",
@@ -15,7 +15,7 @@
     "adapt-scenario"
   ],
   "license": "GPLv3",
-  "_release": "0.0.2",
+  "_release": "1.0.1",
   "_resolution": {
     "type": "branch",
     "branch": "master",

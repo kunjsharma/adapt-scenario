@@ -2,9 +2,7 @@
 
 <img src="assets/adapt-scenario.png" alt="scenario" align="right" width="400px">
 
-A scenario component.
-
-Development in progress, however can be used with minor layout changes.
+A scenario component. Can be used in presenting the probable effects of one or more variables/characters in situation analysis.
 
 ### Installation
 First, be sure to install the [Adapt Command Line Interface](https://github.com/cajones/adapt-cli), then from the command line run:-
@@ -32,6 +30,6 @@ Developed to work with framework, properties.schema requires to edit compatiblit
 Intended to develop standard Adapt browser/devices specifications.
 
 ----------------------------
-**Version number:**  0.0.2  
+**Version number:**  1.0.1  
 **Framework versions:** ^2.0.3  
 **Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  
