@@ -74,6 +74,8 @@
                     "_graphic": {
                         "type": "object",
                         "title": "The Graphic/Icon",
+                        "inputType": "Asset:image",
+                        "validators": ["required"],
                         "required": [
                             "_src"
                         ],
