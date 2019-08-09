@@ -30,6 +30,6 @@ Developed to work with framework, properties.schema requires to edit compatiblit
 Intended to develop standard Adapt browser/devices specifications.
 
 ----------------------------
-**Version number:**  1.0.1  
+**Version number:**  2.0.1  
 **Framework versions:** ^2.0.3  
 **Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  

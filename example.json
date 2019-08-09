@@ -7,81 +7,77 @@
     "title": "Scenario",
     "displayTitle": "Scenario",
     "body": "Select the Forward button on the slider to view the conversation.",
-    "speakerName": 2,
     "itemsOnStage": 2,
-    "_minWidth": 195,
-    "_marginLarge": "100px",
-    "_marginSmall": "14px",
-    "_minHeightSmall": "12px",
-    "items": [
+    "_items": [
     {
         "speaker": "Sam",
         "body": "Hi Martin",
-        "graphic": {
-            "src": "course/en/images/misc/sam.png"
+        "_graphic": {
+            "_src": "assets/sam.png"
         },
-        "position": {
-            "right": false
+        "_position": {
+            "_right": false
         },
-        "color": false
+        "_color": false
     },
     {
         "speaker": "Martin",
         "body": "Hi Sam",
-        "graphic": {
-        "src": "course/en/images/misc/martin.png"
+        "_graphic": {
+            "_src": "assets/martin.png"
         },
-        "position": {
-            "right": true
+        "_position": {
+            "_right": true
         },
-        "color": false
+        "_color": false
     },
     {
         "speaker": "Sam",
-        "body": "Responsive e-learning design takes its inspiration from responsive web design; an approach that ensures a single version of a website or an e-learning course can provide a viewing experience optimised for different devices, from desktop to tablet to smartphone.",
-        "graphic": {
-        "src": "course/en/images/misc/sam.png"
+        "body": "Responsive e-learning design takes its inspiration from responsive web design.",
+        "_graphic": {
+            "_src": "assets/sam.png"
         },
-        "position": {
-            "right": false
+        "_position": {
+            "_right": false
         },
-        "color": true
+        "_color": true
     },
     {
         "speaker": "Martin",
-        "body": "Yes, the Adapt Framework creates HTML5 e-learning courses. They may be delivered with a web server or a with SCORM compliant learning management system. The Adapt framework powers the Adapt authoring tool, an easy to use design tool for creating Adapt courses.",
-        "graphic": {
-        "src": "course/en/images/misc/martin.png"
+        "body": "Yes, the Adapt Framework creates HTML5 e-learning courses. They may be delivered with a web server or a with SCORM compliant learning management system.",
+        "_graphic": {
+            "_src": "assets/martin.png"
         },
-        "position": {
-            "right": true
+        "_position": {
+            "_right": true
         },
-        "color": false
+        "_color": false
     },
     {
         "speaker": "Sam",
         "body": "Right",
-        "graphic": {
-        "src": "course/en/images/misc/sam.png"
+        "_graphic": {
+            "_src": "assets/sam.png"
         },
-        "position": {
-            "right": false
+        "_position": {
+            "_right": false
         },
-        "color": true
+        "_color": true
     },
     {
         "speaker": "Martin",
-        "body": "We’re inspired by being completely open and everything is discussed in the open from the start. This is where these discussions take place. Everyone is welcome and free to ask anything related to the Adapt project or responsive e-learning design, suggest developments and share experiences.",
-        "graphic": {
-        "src": "course/en/images/misc/martin.png"
+        "body": "We’re inspired by being completely open and everything is discussed in the open from the start. This is where these discussions take place.",
+        "_graphic": {
+            "_src": "assets/martin.png"
         },
-        "position": {
-            "right": true
+        "_position": {
+            "_right": true
         },
-        "color": true
+        "_color": true
     }
     ],
     "_pageLevelProgress": {
-        "_isEnabled": false
+        "_isEnabled": true,
+        "_isCompletionIndicatorEnabled": true
     }
 }

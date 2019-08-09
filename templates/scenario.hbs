@@ -4,16 +4,16 @@
 	<div class="scenario-outer-widget">
 		{{! Widget }}
 		<div class="scenario-widget component-widget" style="background-image:url({{src}});">
-			 {{#each items}}
+			 {{#each _items}}
 				<div class="scenario-contanier">
 					{{! Callout }}
 					<div class="scenario-callout-contanier">
-						{{#if graphic}}
-						<div class="scenario-callout-image {{#if position.right}} right {{else}} left {{/if}}">
-							<img src="{{graphic.src}}" alt="{{graphic.alt}}" title="{{{graphic.alt}}}"/>
+						{{#if _graphic}}
+						<div class="scenario-callout-image {{#if _position._right}} right {{else}} left {{/if}}">
+							<img src="{{_graphic._src}}" alt="{{_graphic.alt}}" title="{{{_graphic.alt}}}"/>
 						</div>
 						{{/if}}
-						<div class="scenario-callout-text {{#if color}} color1 {{else}} color2 {{/if}} {{#if position.right}} right {{else}} left {{/if}}">
+						<div class="scenario-callout-text {{#if _color}} color1 {{else}} color2 {{/if}} {{#if _position._right}} right {{else}} left {{/if}}">
 							<div>{{{a11y_text body}}}</div>
 						</div>
 					</div>

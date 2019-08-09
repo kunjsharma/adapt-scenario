@@ -47,7 +47,7 @@ define(function(require) {
 
         setupScenario: function() {
             this.setDeviceSize();
-            var slideCount = this.model.get('items').length;
+            var slideCount = this.model.get('_items').length;
             this.model.set('_itemCount', slideCount);
             this.model.set('_active', true);
             this.updateScenarioProgressBar();
@@ -148,13 +148,13 @@ define(function(require) {
         },
 
         getVisitedItems: function() {
-            return _.filter(this.model.get('items'), function (item) {
+            return _.filter(this.model.get('_items'), function (item) {
                 return item.visited;
             });
         },
         
         evaluateCompletion: function() {
-            if (this.getVisitedItems().length == this.model.get('items').length) {
+            if (this.getVisitedItems().length == this.model.get('_items').length) {
                 this.setCompletionStatus();
             }
         }
