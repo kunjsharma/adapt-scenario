@@ -74,8 +74,9 @@
                     "_graphic": {
                         "type": "object",
                         "title": "The Graphic/Icon",
-                        "inputType": "Asset:image",
-                        "validators": ["required"],
+                        "validators": [
+                            "required"
+                        ],
                         "required": [
                             "_src"
                         ],
@@ -83,6 +84,7 @@
                             "_src": {
                                 "type": "string",
                                 "title": "The path of image",
+                                "inputType": "Asset:image",
                                 "default": "",
                                 "examples": [
                                     "assets/sam.png"
