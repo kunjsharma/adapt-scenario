@@ -1,118 +1,125 @@
 {
-  "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
-  "id": "http://jsonschema.net",
-  "$ref": "http://localhost/plugins/content/component/model.schema",
-  "globals": {
-    "ariaRegion": {
-      "type": "string",
-      "required": true,
-      "default": "Scenario",
-      "inputType": "Text",
-      "validators": [],
-      "translatable": true
-    }
-  },
-  "properties": {
-    "_supportedLayout": {
-      "type": "string",
-      "required": true,
-      "enum": ["full-width", "half-width", "both"],
-      "default": "half-width",
-      "editorOnly": true
-    },
-    "instruction": {
-      "type": "string",
-      "required": false,
-      "default": "",
-      "inputType": "Text",
-      "validators": [],
-      "help": "This is the instruction text",
-      "translatable": true
-    },
-  "_items": {
-   "type": "array",
-      "required": true,
-      "title": "Items",
-   "items": {
-     "type": "object",
-        "required": true,
-     "properties": {
-       "speaker": {
-         "type": "string",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "id": "http://jsonschema.net",
+    "$ref": "http://localhost/plugins/content/component/model.schema",
+    "globals": {
+        "ariaRegion": {
+            "type": "string",
             "required": true,
+            "default": "Scenario",
             "inputType": "Text",
-            "title": "Speakar name",
-            "default": "",
-            "validators": ["required"],
-            "help": "This is Speakar name",
-         "examples": [
-            "Sam"
-          ]
-        },
-        "body": {
-          "type": "string",
-            "required": true,
-            "inputType": "TextArea",
-            "title": "Item Body",
-            "default": "",
-            "validators": ["required"],
-            "help": "Callout text",
-            "translatable": true
-          "examples": [
-            "Hi Martin"
-          ]
-        },
-        "_graphic": {
-          "type": "object",
-          "title": "The Graphic/Icon",
-          "required": [
-            "_src"
-        ],
-          "properties": {
-            "_src": {
-             
-             "type": "string",
-              "title": "The path of image",
-              "default": "",
-              "examples": [
-                "assets/sam.png"
-             ]
-            }
-          }
-        },
-        "_position": {
-          "type": "object",
-          "title": "The _position Schema",
-          "required": [
-            "_right"
-          ],
-          "properties": {
-            "_right": {
-             "type": "boolean",
-              "title": "The _right Schema",
-            "default": false,
-                "inputType": "Checkbox",
-                "validators": [],
-             "examples": [
-               false
-             ]
-            }
-          }
-        },
-        "_color": {
-          "$id": "#/properties/_items/items/properties/_color",
-          "type": "boolean",
-         "title": "The _color Schema",
-         "default": false,
-            "inputType": "Checkbox",
             "validators": [],
-         "examples": [
-           false
-         ]
-       }
-     }
-   }
-  }
-}
+            "translatable": true
+        }
+    },
+    "properties": {
+        "_supportedLayout": {
+            "type": "string",
+            "required": true,
+            "enum": [
+                "full-width",
+                "half-width",
+                "both"
+            ],
+            "default": "half-width",
+            "editorOnly": true
+        },
+        "instruction": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "inputType": "Text",
+            "validators": [],
+            "help": "This is the instruction text",
+            "translatable": true
+        },
+        "_items": {
+            "type": "array",
+            "required": true,
+            "title": "Items",
+            "items": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "speaker": {
+                        "type": "string",
+                        "required": true,
+                        "inputType": "Text",
+                        "title": "Speakar name",
+                        "default": "",
+                        "validators": [
+                            "required"
+                        ],
+                        "help": "This is Speakar name",
+                        "examples": [
+                            "Sam"
+                        ]
+                    },
+                    "body": {
+                        "type": "string",
+                        "required": true,
+                        "inputType": "TextArea",
+                        "title": "Item Body",
+                        "default": "",
+                        "validators": [
+                            "required"
+                        ],
+                        "help": "Callout text",
+                        "translatable": true,
+                        "examples": [
+                            "Hi Martin"
+                        ]
+                    },
+                    "_graphic": {
+                        "type": "object",
+                        "title": "The Graphic/Icon",
+                        "required": [
+                            "_src"
+                        ],
+                        "properties": {
+                            "_src": {
+                                "type": "string",
+                                "title": "The path of image",
+                                "default": "",
+                                "examples": [
+                                    "assets/sam.png"
+                                ]
+                            }
+                        }
+                    },
+                    "_position": {
+                        "type": "object",
+                        "title": "The _position Schema",
+                        "required": [
+                            "_right"
+                        ],
+                        "properties": {
+                            "_right": {
+                                "type": "boolean",
+                                "title": "The _right Schema",
+                                "default": false,
+                                "inputType": "Checkbox",
+                                "validators": [],
+                                "examples": [
+                                    false
+                                ]
+                            }
+                        }
+                    },
+                    "_color": {
+                        "$id": "#/properties/_items/items/properties/_color",
+                        "type": "boolean",
+                        "title": "The _color Schema",
+                        "default": false,
+                        "inputType": "Checkbox",
+                        "validators": [],
+                        "examples": [
+                            false
+                        ]
+                    }
+                }
+            }
+        }
+    }
 }
