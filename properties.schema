@@ -1,110 +1,118 @@
 {
-  2   "definitions": {},
-  3   "$schema": "http://json-schema.org/draft-07/schema#",
-  4   "$id": "http://example.com/root.json",
-  5   "type": "object",
-  6   "title": "The Root Schema",
-  7   "required": [
-  8     "itemsOnStage",
-  9     "_items",
- 10     "_pageLevelProgress"
- 11   ],
- 12   "properties": {
- 13     "itemsOnStage": {
- 14       "$id": "#/properties/itemsOnStage",
- 15       "type": "integer",
- 16       "title": "The Itemsonstage Schema",
- 17       "default": 0,
- 18       "examples": [
- 19         2
- 20       ]
- 21     },
- 22     "_items": {
- 23       "$id": "#/properties/_items",
- 24       "type": "array",
- 25       "title": "The _items Schema",
- 26       "items": {
- 27         "$id": "#/properties/_items/items",
- 28         "type": "object",
- 29         "title": "The Items Schema",
- 30         "required": [
- 31           "speaker",
- 32           "body",
- 33           "_graphic",
- 34           "_position",
- 35           "_color"
- 36         ],
- 37         "properties": {
- 38           "speaker": {
- 39             "$id": "#/properties/_items/items/properties/speaker",
- 40             "type": "string",
- 41             "title": "The Speaker Schema",
- 42             "default": "",
- 43             "examples": [
- 44               "Sam"
- 45             ],
- 46             "pattern": "^(.*)$"
- 47           },
- 48           "body": {
- 49             "$id": "#/properties/_items/items/properties/body",
- 50             "type": "string",
- 51             "title": "The Body Schema",
- 52             "default": "",
- 53             "examples": [
- 54               "Hi Martin"
- 55             ],
- 56             "pattern": "^(.*)$"
- 57           },
- 58           "_graphic": {
- 59             "$id": "#/properties/_items/items/properties/_graphic",
- 60             "type": "object",
- 61             "title": "The _graphic Schema",
- 62             "required": [
- 63               "_src"
- 64             ],
- 65             "properties": {
- 66               "_src": {
- 67                 "$id": "#/properties/_items/items/properties/_graphic/properties/_src",
- 68                 "type": "string",
- 69                 "title": "The _src Schema",
- 70                 "default": "",
- 71                 "examples": [
- 72                   "assets/sam.png"
- 73                 ],
- 74                 "pattern": "^(.*)$"
- 75               }
- 76             }
- 77           },
- 78           "_position": {
- 79             "$id": "#/properties/_items/items/properties/_position",
- 80             "type": "object",
- 81             "title": "The _position Schema",
- 82             "required": [
- 83               "_right"
- 84             ],
- 85             "properties": {
- 86               "_right": {
- 87                 "$id": "#/properties/_items/items/properties/_position/properties/_right",
- 88                 "type": "boolean",
- 89                 "title": "The _right Schema",
- 90                 "default": false,
- 91                 "examples": [
- 92                   false
- 93                 ]
- 94               }
- 95             }
- 96           },
- 97           "_color": {
- 98             "$id": "#/properties/_items/items/properties/_color",
- 99             "type": "boolean",
-100             "title": "The _color Schema",
-101             "default": false,
-102             "examples": [
-103               false
-104             ]
-105           }
-106         }
-107       }
-108     }
-138   }
-139 }
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/plugins/content/component/model.schema",
+  "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": true,
+      "default": "Scenario",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    }
+  },
+  "properties": {
+    "_supportedLayout": {
+      "type": "string",
+      "required": true,
+      "enum": ["full-width", "half-width", "both"],
+      "default": "half-width",
+      "editorOnly": true
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "help": "This is the instruction text",
+      "translatable": true
+    },
+  "_items": {
+   "type": "array",
+      "required": true,
+      "title": "Items",
+   "items": {
+     "type": "object",
+        "required": true,
+     "properties": {
+       "speaker": {
+         "type": "string",
+            "required": true,
+            "inputType": "Text",
+            "title": "Speakar name",
+            "default": "",
+            "validators": ["required"],
+            "help": "This is Speakar name",
+         "examples": [
+            "Sam"
+          ]
+        },
+        "body": {
+          "type": "string",
+            "required": true,
+            "inputType": "TextArea",
+            "title": "Item Body",
+            "default": "",
+            "validators": ["required"],
+            "help": "Callout text",
+            "translatable": true
+          "examples": [
+            "Hi Martin"
+          ]
+        },
+        "_graphic": {
+          "type": "object",
+          "title": "The Graphic/Icon",
+          "required": [
+            "_src"
+        ],
+          "properties": {
+            "_src": {
+             
+             "type": "string",
+              "title": "The path of image",
+              "default": "",
+              "examples": [
+                "assets/sam.png"
+             ]
+            }
+          }
+        },
+        "_position": {
+          "type": "object",
+          "title": "The _position Schema",
+          "required": [
+            "_right"
+          ],
+          "properties": {
+            "_right": {
+             "type": "boolean",
+              "title": "The _right Schema",
+            "default": false,
+                "inputType": "Checkbox",
+                "validators": [],
+             "examples": [
+               false
+             ]
+            }
+          }
+        },
+        "_color": {
+          "$id": "#/properties/_items/items/properties/_color",
+          "type": "boolean",
+         "title": "The _color Schema",
+         "default": false,
+            "inputType": "Checkbox",
+            "validators": [],
+         "examples": [
+           false
+         ]
+       }
+     }
+   }
+  }
+}
+}
