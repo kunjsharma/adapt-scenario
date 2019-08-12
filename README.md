@@ -23,7 +23,7 @@ https://kunjsharma.github.io
 
 ### Limitations
 
-Developed to <b>work with framework only</b>. `properties.schema` requires to edit compatiblity with authoring tool. Contributors are welcome.
+Developed to <b>work with framework only</b>. Probably, only `properties.schema` requires to edit compatiblity with authoring tool. Contributors are welcome.
 
 ### Browser/platform specification
 
