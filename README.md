@@ -2,7 +2,7 @@
 
 <img src="assets/adapt-scenario.png" alt="scenario" align="right" width="400px">
 
-A scenario component. Can be used in presenting the probable effects of one or more variables/characters in situation analysis.
+A scenario component. Can be used in presenting the probable effects of one or more characters in situation analysis.
 
 ### Installation
 First, be sure to install the [Adapt Command Line Interface](https://github.com/cajones/adapt-cli), then from the command line run:-
