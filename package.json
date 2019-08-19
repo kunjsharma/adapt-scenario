@@ -1,6 +1,6 @@
 {
   "name": "adapt-scenario",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A scenario component. Can be used in presenting the probable effects of one or more variables/characters in situation analysis.",
   "main": "",
   "scripts": {

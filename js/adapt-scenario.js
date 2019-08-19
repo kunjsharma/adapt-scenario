@@ -1,24 +1,13 @@
-define(function(require) {
+define(function (require) {
 
     var ComponentView = require('coreViews/componentView');
     var Adapt = require('coreJS/adapt');
-    var Handlebars = require('handlebars');
     var Scenario = ComponentView.extend({
         events: {
             'click .scenario-navigator-button': 'navigateClick'
         },
 
-        preRender: function() {
-            //OUR HBS template requires this helper
-            if (Handlebars.helpers && !('ifvalue' in Handlebars.helpers)) {
-                Handlebars.registerHelper('ifvalue', function (conditional, options) {
-                    if (options.hash.value === conditional) {
-                        return options.fn(this)
-                    } else {
-                        return options.inverse(this);
-                    }
-                });
-            }
+        preRender: function () {
             this.model.set('_currentScenario', 0);
             this.model.set('_itemsOnStage', 0);
 
@@ -26,7 +15,7 @@ define(function(require) {
             this.listenTo(Adapt, 'device:changed', this.setDeviceSize, this);
         },
 
-        setDeviceSize: function() {
+        setDeviceSize: function () {
             if (Adapt.device.screenSize !== 'small') {
                 this.showScenarioItems();
                 this.model.set('_isDesktop', true);
@@ -38,14 +27,14 @@ define(function(require) {
             }
         },
 
-        postRender: function() {
+        postRender: function () {
             this.setupScenario();
             this.showScenarioItems();
             this.setReadyStatus();
             this.model.set('_itemsOnStage', this.model.get('itemsOnStage'));
         },
 
-        setupScenario: function() {
+        setupScenario: function () {
             this.setDeviceSize();
             var slideCount = this.model.get('_items').length;
             this.model.set('_itemCount', slideCount);
@@ -53,7 +42,7 @@ define(function(require) {
             this.updateScenarioProgressBar();
         },
 
-        navigateClick: function(event) {
+        navigateClick: function (event) {
             event.preventDefault();
             if (!this.model.get('_active')) return;
             var clickedButton = this.$(event.currentTarget);
@@ -72,22 +61,22 @@ define(function(require) {
             this.setDeviceSize();
             this.updateScenarioProgressBar();
             this.evaluateCompletion();
-            
-            console.log("this.model.get('_currentScenario')", this.model.get('_currentScenario'));
+
+            //console.log("this.model.get('_currentScenario')", this.model.get('_currentScenario'));
         },
 
-        showScenarioItems: function() {
+        showScenarioItems: function () {
             if (Adapt.device.screenSize !== 'small') {
                 var currentScenarioNo = this.model.get('_currentScenario') - 1,
-                container = this.$('.scenario-contanier');
+                    container = this.$('.scenario-contanier');
                 if (this.model.get('_currentScenario') == 0) {
                     container.addClass("hidden");
                 } else {
-                    var itemCount = (currentScenarioNo) % (this.model.get('_itemsOnStage'));
-                    var startIndex = 0;
-                    var endIndex = 0;
+                    var itemCount = (currentScenarioNo) % (this.model.get('_itemsOnStage')),
+                        startIndex = 0,
+                        endIndex = 0;
                     container.addClass("hidden");
-                    if (itemCount == 0) container.eq(currentScenarioNo).removeClass('hidden').css({'opacity': 0}).animate({opacity: 1});
+                    if (itemCount == 0) container.eq(currentScenarioNo).removeClass('hidden').css({ 'opacity': 0 }).animate({ opacity: 1 });
                     else {
                         startIndex = Math.floor((currentScenarioNo) / (this.model.get('_itemsOnStage'))) * (this.model.get('_itemsOnStage'));
                         endIndex = currentScenarioNo;
@@ -96,7 +85,7 @@ define(function(require) {
                         }
                     }
                 }
-            
+
                 $(container).eq(currentScenarioNo).a11y_focus();
             } else {
                 this.$('.scenario-contanier').removeClass('hidden');
@@ -104,8 +93,8 @@ define(function(require) {
             }
         },
 
-        updateScenarioProgressBar: function() {
-             var index = this.model.get('_currentScenario'),
+        updateScenarioProgressBar: function () {
+            var index = this.model.get('_currentScenario'),
                 total = this.model.get('_itemCount'),
                 width = (index / total) * 100;
             //this.$('.scenario-navigator-progressbar-fill').width(width + '%');
@@ -113,12 +102,12 @@ define(function(require) {
                 width: (width + '%')
             }, 100);
             this.$('.scenario-navigator-button').removeClass('disabled').attr('aria-hidden', false).prop('disabled', false);;
-            if(index == 0) {
+            if (index == 0) {
                 this.$('.scenario-navigator-button.left').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);
-            } else if(index == total) {
+            } else if (index == total) {
                 this.$('.scenario-navigator-button.right').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);;
             }
-            
+
             var _progressFill = "";
             /* var _blockWidth = (100 / index) + "%";
             for (var i = 0; i < index; i++) {
@@ -137,7 +126,7 @@ define(function(require) {
             }
         },
 
-        resetScenario: function() {
+        resetScenario: function () {
             if (Adapt.device.screenSize !== 'small') {
                 this.model.set('_currentScenario', 0);
                 this.$('.scenario-contanier').addClass("hidden");
@@ -147,13 +136,13 @@ define(function(require) {
             }
         },
 
-        getVisitedItems: function() {
+        getVisitedItems: function () {
             return _.filter(this.model.get('_items'), function (item) {
                 return item.visited;
             });
         },
-        
-        evaluateCompletion: function() {
+
+        evaluateCompletion: function () {
             if (this.getVisitedItems().length == this.model.get('_items').length) {
                 this.setCompletionStatus();
             }

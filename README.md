@@ -30,6 +30,6 @@ Developed to <b>work with framework only</b>. Probably, only `properties.schema`
 Intended to develop standard Adapt browser/devices specifications.
 
 ----------------------------
-**Version number:**  2.0.1  
+**Version number:**  2.1.0  
 **Framework versions:** ^2.0.3  
 **Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  
