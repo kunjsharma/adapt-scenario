@@ -13,7 +13,7 @@ Or, download the ZIP and extract into the src > components directory and run an 
 
 ### Demo
 
-https://kunjsharma.github.io
+https://kunjsharma.github.io/#/id/co-00
 
 ### Attributes
 
