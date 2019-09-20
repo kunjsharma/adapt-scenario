@@ -32,4 +32,4 @@ Intended to develop standard Adapt browser/devices specifications.
 ----------------------------
 **Version number:**  2.1.0  
 **Framework versions:** ^2.0.3  
-**Author/maintainer:** Kunj B Sharma <kunjsharma@hotmail.com>  
+**Author/maintainer:** Kunj <kunjsharma@hotmail.com>  

@@ -4,7 +4,7 @@
   "framework": "^4.0.0",
   "homepage": "https://github.com/kunjsharma/adapt-scenario",
   "authors": [
-    "Kunj B Sharma <kunjsharma@hotmail.com>"
+    "Kunj <kunjsharma@hotmail.com>"
   ],
   "description": "A scenario conversation component. Can be used in presenting the probable effects of one or more variables/characters in situation analysis.",
   "main": "/js/adapt-scenario.js",
