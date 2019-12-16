@@ -4,8 +4,8 @@
         "type": "git",
         "url": "git://github.com/kunjsharma/adapt-scenario.git"
     },
-    "framework": "^4.0.0",
-    "version": "2.1.0",
+    "framework": ">=5",
+    "version": "3.0.0",
     "homepage": "https://github.com/kunjsharma/adapt-scenario",
     "authors": [
         "Kunj <kunjsharma@hotmail.com>"

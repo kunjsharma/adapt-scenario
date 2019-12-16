@@ -1,7 +1,7 @@
 {
   "name": "adapt-scenario",
-  "version": "2.1.0",
-  "framework": "^4.0.0",
+  "version": "3.0.0",
+  "framework": ">=5",
   "homepage": "https://github.com/kunjsharma/adapt-scenario",
   "authors": [
     "Kunj <kunjsharma@hotmail.com>"
@@ -15,14 +15,14 @@
     "adapt-scenario"
   ],
   "license": "GPLv3",
-  "_release": "2.1.0",
+  "_release": "3.0.0",
   "_resolution": {
     "type": "branch",
     "branch": "master",
     "commit": "3c933a5f-3234-4c5c-af4e-72a864684567"
   },
   "_source": "git://github.com/kunjsharma/adapt-scenario.git",
-  "_target": ">=4.0.0",
+  "_target": ">=3.0.0",
   "_originalSource": "adapt-scenario",
   "_direct": true
 }
