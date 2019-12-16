@@ -2,10 +2,8 @@
     .hidden {
         display: none;
     }
-
     &__inner {
         overflow: auto;
-        //background: @grey;
         padding: @item-padding;
     }
     &__outer-widget {
@@ -33,6 +31,7 @@
             }
         }
     }
+    //Callouts
     &__callout-image {
         &.right {
             float: left;
@@ -44,7 +43,7 @@
             display: none;
         }
     }
-
+    
     &__callout-text {
         position: relative;
         min-height: 50px;
@@ -90,7 +89,6 @@
                 width: 0;
                 position: absolute;
                 pointer-events: none;
-
                 border-width: 27px 27px 0px 27px;
                 margin-top: -20px;
             }
@@ -108,16 +106,13 @@
                 width: 0;
                 position: absolute;
                 pointer-events: none;
-
                 border-width: 27px 27px 0px 27px;
                 margin-top: -20px;
             }
         }
-
         .calloutTitle {
             font-size: 14px;
         }
-        
         @media screen and (max-width: @device-width-medium) {
             max-width: 48%;
         }
@@ -128,7 +123,7 @@
             margin-bottom: @item-padding;
         }
     }
-    //////////////////////////////////Scenario navigator
+    //Navigator
     &__navigator-container {
         max-width: 326px;
         margin: 0 auto;
@@ -158,12 +153,11 @@
         height: 100%;
         background-color: lighten(@blue, 20%);
     }
-    ///////////////////////////////////////////////////////
+    //Buttons
     &__navigator-button {
         width: 50px;
         height: 50px;
         display: inline-block;
-        //background-color: @green;
         margin: 0px;
         padding: 0px;
         text-align: center;
@@ -196,31 +190,12 @@
         }
         &.disabled {
             cursor: default;
-            //color: @disabled;
             background-color: @disabled;
             &:hover {
                 background-color: @disabled;
-                //color: @disabled;
             }
         }
-        &.selected {
-            //background-color: @disabled-inverted;
-            //color: @btn-color-inverted;
-        }
-        &:hover {
-            //color: @btn-color-inverted;
-        }
-        &.visited {
-            //color: @visited;
-            //background-color: @visited-inverted;
-            //border-color: @visited-inverted;
-        }
-        .icon {
-            //color: @font-color-inverted;
-            //margin: 12px;
-        }
     }
-
     @media screen and (max-width: @device-width-small) {
         display: none;
     }
