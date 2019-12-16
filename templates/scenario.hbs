@@ -1,19 +1,19 @@
 {{! Maintainer - Kunj kunjsharma@hotmail.com}}
-<div class="scenario-inner component-inner" role="region" aria-label="{{_globals._components._scenarioImages.ariaRegion}}">
+<div class="scenario__inner component__inner" role="region" aria-label="{{_globals._components._scenarioImages.ariaRegion}}">
 	{{> component this}}
-	<div class="scenario-outer-widget">
+	<div class="scenario__outer-widget">
 		{{! Widget }}
-		<div class="scenario-widget component-widget" style="background-image:url({{src}});">
+		<div class="scenario__widget component__widget" style="background-image:url({{src}});">
 			 {{#each _items}}
-				<div class="scenario-contanier">
+				<div class="scenario__contanier">
 					{{! Callout }}
-					<div class="scenario-callout-contanier">
+					<div class="scenario__callout-contanier">
 						{{#if _graphic}}
-						<div class="scenario-callout-image {{#if _position._right}} right {{else}} left {{/if}}">
+						<div class="scenario__callout-image {{#if _position._right}} right {{else}} left {{/if}}">
 							<img src="{{_graphic._src}}" alt="{{_graphic.alt}}" title="{{{_graphic.alt}}}"/>
 						</div>
 						{{/if}}
-						<div class="scenario-callout-text {{#if _color}} color1 {{else}} color2 {{/if}} {{#if _position._right}} right {{else}} left {{/if}}">
+						<div class="scenario__callout-text {{#if _color}} color1 {{else}} color2 {{/if}} {{#if _position._right}} right {{else}} left {{/if}}">
 							<div>{{{a11y_text body}}}</div>
 						</div>
 					</div>
@@ -21,16 +21,16 @@
 			 {{/each}}
 		</div>
 		{{! Navigator }}
-		<div class="scenario-navigator-container">
-			<button class="scenario-navigator-button left" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioBackward.ariaLabel}}">
+		<div class="scenario__navigator-container">
+			<button class="scenario__navigator-button left" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioBackward.ariaLabel}}">
 				<div class="icon icon-controls-left"></div>
 			</button>
-			<div class="scenario-navigator-progressbar-container">
-				<div class="scenario-navigator-progressbar">
-					<div class="scenario-navigator-progressbar-fill"></div>
+			<div class="scenario__navigator-progressbar-container">
+				<div class="scenario__navigator-progressbar">
+					<div class="scenario__navigator-progressbar-fill"></div>
 				</div>
 			</div>
-			<button class="scenario-navigator-button right" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioForward.ariaLabel}}">
+			<button class="scenario__navigator-button right" href="javascript:void();" role="button" aria-label="{{_buttons._scenarioForward.ariaLabel}}">
 				<div class="icon icon-controls-right"></div>
 			</button>
 		</div>

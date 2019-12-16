@@ -4,7 +4,7 @@ define(function (require) {
     var Adapt = require('coreJS/adapt');
     var Scenario = ComponentView.extend({
         events: {
-            'click .scenario-navigator-button': 'navigateClick'
+            'click .scenario__navigator-button': 'navigateClick'
         },
 
         preRender: function () {
@@ -68,7 +68,7 @@ define(function (require) {
         showScenarioItems: function () {
             if (Adapt.device.screenSize !== 'small') {
                 var currentScenarioNo = this.model.get('_currentScenario') - 1,
-                    container = this.$('.scenario-contanier');
+                    container = this.$('.scenario__contanier');
                 if (this.model.get('_currentScenario') == 0) {
                     container.addClass("hidden");
                 } else {
@@ -88,7 +88,7 @@ define(function (require) {
 
                 $(container).eq(currentScenarioNo).a11y_focus();
             } else {
-                this.$('.scenario-contanier').removeClass('hidden');
+                this.$('.scenario__contanier').removeClass('hidden');
                 this.setCompletionStatus();
             }
         },
@@ -97,26 +97,26 @@ define(function (require) {
             var index = this.model.get('_currentScenario'),
                 total = this.model.get('_itemCount'),
                 width = (index / total) * 100;
-            //this.$('.scenario-navigator-progressbar-fill').width(width + '%');
-            this.$('.scenario-navigator-progressbar-fill').animate({
+            //this.$('.scenario__navigator-progressbar-fill').width(width + '%');
+            this.$('.scenario__navigator-progressbar-fill').animate({
                 width: (width + '%')
             }, 100);
-            this.$('.scenario-navigator-button').removeClass('disabled').attr('aria-hidden', false).prop('disabled', false);;
+            this.$('.scenario__navigator-button').removeClass('disabled').attr('aria-hidden', false).prop('disabled', false);;
             if (index == 0) {
-                this.$('.scenario-navigator-button.left').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);
+                this.$('.scenario__navigator-button.left').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);
             } else if (index == total) {
-                this.$('.scenario-navigator-button.right').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);;
+                this.$('.scenario__navigator-button.right').addClass('disabled').attr('aria-hidden', true).prop('disabled', true);;
             }
 
             var _progressFill = "";
             /* var _blockWidth = (100 / index) + "%";
             for (var i = 0; i < index; i++) {
-                _progressFill = _progressFill + "<div class='scenario-navigator-progressbar-block-button' style='width:" + _blockWidth + "' href='javascript:void();'><div class='scenario-navigator-progressbar-block-line'></div></div>";
+                _progressFill = _progressFill + "<div class='scenario__navigator-progressbar-block-button' style='width:" + _blockWidth + "' href='javascript:void();'><div class='scenario__navigator-progressbar-block-line'></div></div>";
 
             } */
-            this.$('.scenario-navigator-progressbar-fill').html(_progressFill);
+            this.$('.scenario__navigator-progressbar-fill').html(_progressFill);
             if (index == total) {
-                /* this.$('.scenario-navigator-progressbar-block-button')
+                /* this.$('.scenario__navigator-progressbar-block-button')
                     .eq((total - 1))
                     .html(""); */
             }
@@ -129,10 +129,10 @@ define(function (require) {
         resetScenario: function () {
             if (Adapt.device.screenSize !== 'small') {
                 this.model.set('_currentScenario', 0);
-                this.$('.scenario-contanier').addClass("hidden");
+                this.$('.scenario__contanier').addClass("hidden");
                 this.updateScenarioProgressBar();
             } else {
-                this.$('.scenario-contanier').removeClass("hidden");
+                this.$('.scenario__contanier').removeClass("hidden");
             }
         },
 
