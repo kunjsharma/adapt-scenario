@@ -1,6 +1,6 @@
 # adapt-scenario  
 
-<img src="assets/adapt-scenario.png" alt="scenario" align="right" width="400px">
+<img src="assets/adapt-scenario.gif" alt="scenario" align="right" width="400px">
 
 A scenario conversation component. Can be used in presenting the probable effects of one or more characters in situation analysis.
 
